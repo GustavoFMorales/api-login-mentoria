@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "nome": "João Silva",
+    "email": "joao@email.com",
+    "senha": "$2b$10$mNaBtYLfSYV5MYsHbzSkSupe9hJxCMcX.L61xnxIIs6DmTSG02IGu"
+  },
+  {
+    "id": 2,
+    "nome": "Gustavo Morales",
+    "email": "gustavo050899.morales@gmail.com",
+    "senha": "$2b$10$PZuaBwTlSpK8pq/VwK6RQuKV4NKvAJezxUNE.8ypfDonau08.SSVG",
+    "codigoRecuperacao": null
+  }
+]
