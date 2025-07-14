@@ -249,5 +249,26 @@ router.post('/teste-email', async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /auth/usuarios:
+ *   get:
+ *     summary: Listar todos os usuários
+ *     description: Retorna uma lista de todos os usuários cadastrados
+ *     tags: [Usuários]
+ *     responses:
+ *       200:
+ *         description: Lista de usuários retornada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Usuario'
+ *       500:
+ *         description: Erro interno do servidor
+ */
+router.get('/usuarios', authController.listaUsuarios);
+
 module.exports = router;
 

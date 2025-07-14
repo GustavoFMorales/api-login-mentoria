@@ -174,4 +174,16 @@ exports.redefinirSenha = async (req, res) => {
         console.error("Erro na redefinição de senha:", error);
         res.status(500).json({ error: "Erro interno do servidor" });
     }
+
+
+};
+
+exports. listaUsuarios = async (req, res) => {
+    try {
+        const usuarios = carregaUsuarios();
+        res.json(usuarios);
+    } catch (error) {
+        console.error("Erro ao listar usuários:", error);
+        res.status(500).json({ error: "Erro interno do servidor" });
+    }
 };

@@ -182,6 +182,29 @@ POST /auth/teste-email
 }
 ```
 
+### 6. Listar Usuários
+```
+GET /auth/usuarios
+```
+
+**Resposta:**
+```json
+[
+  {
+    "id": 1,
+    "nome": "João Silva",
+    "email": "joao@email.com",
+    "senha": "$2b$10$..."
+  },
+  {
+    "id": 2,
+    "nome": "Maria Souza",
+    "email": "maria@email.com",
+    "senha": "$2b$10$..."
+  }
+]
+```
+
 ## 📁 Estrutura do Projeto
 
 ```
