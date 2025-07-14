@@ -122,6 +122,29 @@ POST /auth/login
 }
 ```
 
+**Observação:** Após 3 tentativas de senha incorreta, o usuário será bloqueado e não poderá mais realizar login até ser desbloqueado manualmente.
+
+**Exemplos de erro:**
+
+- Usuário bloqueado:
+```json
+{
+  "error": "Usuário bloqueado"
+}
+```
+- Senha incorreta:
+```json
+{
+  "error": "Senha incorreta"
+}
+```
+- Usuário não encontrado:
+```json
+{
+  "error": "Usuário não encontrado"
+}
+```
+
 ### 3. Recuperação de Senha
 ```
 POST /auth/recuperar

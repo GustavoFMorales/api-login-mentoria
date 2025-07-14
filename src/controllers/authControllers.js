@@ -89,11 +89,27 @@ exports.login = async (req, res) => {
             return res.status(401).json({ error: "Usuário não encontrado" });
         }
 
-        // Verificar senha criptografada
-        const senhaValida = await bcrypt.compare(senha, usuarioLogin.senha);
-        if (!senhaValida) {
+        // Usuário bloqueado
+        if (usuarioLogin.bloqueado) {
+            return res.status(401).json({ error: "Usuário bloqueado" });
+        }
+
+        const senhaCorreta = await bcrypt.compare(senha, usuarioLogin.senha);
+
+        if (!senhaCorreta) {
+            usuarioLogin.tentativasFalhas = (usuarioLogin.tentativasFalhas || 0) + 1;
+            if (usuarioLogin.tentativasFalhas >= 3) {
+                usuarioLogin.bloqueado = true;
+                salvaUsuariosJson(usuariosLogin);
+                return res.status(401).json({ error: "Usuário bloqueado" });
+            }
+            salvaUsuariosJson(usuariosLogin);
             return res.status(401).json({ error: "Senha incorreta" });
         }
+
+        // Login bem-sucedido: resetar tentativas
+        usuarioLogin.tentativasFalhas = 0;
+        salvaUsuariosJson(usuariosLogin);
 
         // Gerar o token JWT
         const token = jwt.sign(
@@ -113,7 +129,7 @@ exports.login = async (req, res) => {
 exports.recuperarSenha = async (req, res) => {
     try {
         const { email } = req.body;
-        
+
         if (!email) {
             return res.status(400).json({ error: "Email é obrigatório" });
         }
@@ -147,28 +163,28 @@ exports.recuperarSenha = async (req, res) => {
 exports.redefinirSenha = async (req, res) => {
     try {
         const { email, codigo, novaSenha } = req.body;
-      
+
         if (!email || !codigo || !novaSenha) {
             return res.status(400).json({ error: 'Informe email, código e nova senha.' });
         }
-      
+
         const usuarios = carregaUsuarios();
         const usuario = usuarios.find(u => u.email === email);
-      
+
         if (!usuario) {
             return res.status(404).json({ error: 'Usuário não encontrado.' });
         }
-      
+
         if (usuario.codigoRecuperacao !== codigo) {
             return res.status(401).json({ error: 'Código inválido.' });
         }
-      
+
         const senhaCriptografada = await bcrypt.hash(novaSenha, 10);
         usuario.senha = senhaCriptografada;
         usuario.codigoRecuperacao = null;
-      
+
         salvaUsuariosJson(usuarios);
-      
+
         res.json({ message: 'Senha redefinida com sucesso!' });
     } catch (error) {
         console.error("Erro na redefinição de senha:", error);
@@ -178,7 +194,7 @@ exports.redefinirSenha = async (req, res) => {
 
 };
 
-exports. listaUsuarios = async (req, res) => {
+exports.listaUsuarios = async (req, res) => {
     try {
         const usuarios = carregaUsuarios();
         res.json(usuarios);

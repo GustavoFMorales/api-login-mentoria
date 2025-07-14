@@ -51,7 +51,10 @@ router.post('/cadastrar', authController.registrar);
  * /auth/login:
  *   post:
  *     summary: Fazer login
- *     description: Autentica um usuário com email e senha, retornando um token JWT
+ *     description: |
+ *       Autentica um usuário com email e senha, retornando um token JWT.
+ *       
+ *       **Observação:** Após 3 tentativas de senha incorreta, o usuário será bloqueado e não poderá mais realizar login até ser desbloqueado manualmente.
  *     tags: [Autenticação]
  *     requestBody:
  *       required: true
@@ -79,11 +82,24 @@ router.post('/cadastrar', authController.registrar);
  *             schema:
  *               $ref: '#/components/schemas/Erro'
  *       401:
- *         description: Credenciais inválidas
+ *         description: Credenciais inválidas, usuário bloqueado ou não encontrado
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Erro'
+ *             examples:
+ *               senha_incorreta:
+ *                 summary: Senha incorreta
+ *                 value:
+ *                   error: "Senha incorreta"
+ *               usuario_bloqueado:
+ *                 summary: Usuário bloqueado
+ *                 value:
+ *                   error: "Usuário bloqueado"
+ *               usuario_nao_encontrado:
+ *                 summary: Usuário não encontrado
+ *                 value:
+ *                   error: "Usuário não encontrado"
  *       500:
  *         description: Erro interno do servidor
  */
