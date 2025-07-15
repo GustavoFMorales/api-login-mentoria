@@ -1,7 +1,8 @@
-const express = require("express");
+import express from "express";
+import * as authController from "../controllers/authControllers.js";
+import { enviarCodigo } from '../utils/email.js';
+
 const router = express.Router();
-const authController = require("../controllers/authControllers");
-const { enviarCodigo } = require('../utils/email');
 
 /**
  * @swagger
@@ -286,5 +287,5 @@ router.post('/teste-email', async (req, res) => {
  */
 router.get('/usuarios', authController.listaUsuarios);
 
-module.exports = router;
+export default router;
 

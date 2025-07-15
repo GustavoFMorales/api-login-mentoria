@@ -4,8 +4,7 @@
     "nome": "João Silva",
     "email": "joao@email.com",
     "senha": "$2b$10$mNaBtYLfSYV5MYsHbzSkSupe9hJxCMcX.L61xnxIIs6DmTSG02IGu",
-    "tentativasFalhas": 3,
-    "bloqueado": true
+    "tentativasFalhas": 1
   },
   {
     "id": 2,

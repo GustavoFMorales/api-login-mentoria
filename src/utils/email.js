@@ -1,5 +1,5 @@
-const nodemailer = require('nodemailer');
-const dotenv = require('dotenv');
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
 // Carregar variáveis de ambiente
 dotenv.config();
@@ -57,7 +57,7 @@ const verificarTransporter = async () => {
     }
 };
 
-exports.enviarCodigo = async (destinatario, codigo) => {
+export const enviarCodigo = async (destinatario, codigo) => {
     try {
         console.log(`Tentando enviar código ${codigo} para: ${destinatario}`);
         

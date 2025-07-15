@@ -1,9 +1,9 @@
-const fs = require("fs");
-const path = require("path");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const dotenv = require("dotenv");
-const { enviarCodigo } = require('../utils/email');
+import fs from "fs";
+import path from "path";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+import { enviarCodigo } from '../utils/email.js';
 
 // Carregar variáveis de ambiente
 dotenv.config();
@@ -12,6 +12,11 @@ dotenv.config();
 const SECRET_KEY = process.env.JWT_SECRET || "minha_chave_secreta";
 
 // Caminho absoluto para o arquivo users.json
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const usersFile = path.join(__dirname, "../data/users.json");
 
 // Carrega os usuários do arquivo JSON
@@ -36,7 +41,7 @@ const salvaUsuariosJson = (usuarios) => {
 };
 
 // Rota de cadastro de usuário
-exports.registrar = async (req, res) => {
+export const registrar = async (req, res) => {
     try {
         const { nome, email, senha } = req.body;
 
@@ -72,7 +77,7 @@ exports.registrar = async (req, res) => {
 };
 
 // Rota de login de usuário
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
     try {
         const { email, senha } = req.body;
 
@@ -126,7 +131,7 @@ exports.login = async (req, res) => {
 };
 
 // Rota de recuperação de senha
-exports.recuperarSenha = async (req, res) => {
+export const recuperarSenha = async (req, res) => {
     try {
         const { email } = req.body;
 
@@ -160,7 +165,7 @@ exports.recuperarSenha = async (req, res) => {
 };
 
 // Redefinir senha 
-exports.redefinirSenha = async (req, res) => {
+export const redefinirSenha = async (req, res) => {
     try {
         const { email, codigo, novaSenha } = req.body;
 
@@ -194,7 +199,7 @@ exports.redefinirSenha = async (req, res) => {
 
 };
 
-exports.listaUsuarios = async (req, res) => {
+export const listaUsuarios = async (req, res) => {
     try {
         const usuarios = carregaUsuarios();
         res.json(usuarios);

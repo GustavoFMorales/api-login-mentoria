@@ -1,7 +1,8 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const swaggerUi = require('swagger-ui-express');
-const swaggerSpecs = require('./config/swagger');
+import express from "express";
+import dotenv from "dotenv";
+import swaggerUi from "swagger-ui-express";
+import swaggerSpecs from "./config/swagger.js";
+import authRoutes from "./routes/authRoutes.js";
 
 console.log("Iniciando aplicação...");
 
@@ -37,7 +38,6 @@ console.log("Swagger UI configurado em /api-docs");
 // Importando as rotas
 try {
     console.log("Tentando carregar rotas...");
-    const authRoutes = require("./routes/authRoutes");
     app.use("/auth", authRoutes);
     console.log("Rotas de autenticação carregadas com sucesso");
 } catch (error) {
