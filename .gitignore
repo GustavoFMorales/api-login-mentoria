@@ -27,6 +27,9 @@ coverage/
 # nyc test coverage
 .nyc_output
 
+# Relatórios de teste
+mochawesome-report/
+
 # Grunt intermediate storage
 .grunt
 

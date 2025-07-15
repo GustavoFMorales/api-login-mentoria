@@ -12,5 +12,35 @@
     "email": "gustavo050899.morales@gmail.com",
     "senha": "$2b$10$PZuaBwTlSpK8pq/VwK6RQuKV4NKvAJezxUNE.8ypfDonau08.SSVG",
     "codigoRecuperacao": null
+  },
+  {
+    "id": 3,
+    "nome": "Lucas Silva",
+    "email": "lucasSilva@email.com",
+    "senha": "$2b$10$r9tENp.7E8NjTclA0AXvI.eh50OHMPye4Jdmy75ospaccc0XvnWee"
+  },
+  {
+    "id": 4,
+    "nome": "Lucas Silva2",
+    "email": "lucasSilva2@email.com",
+    "senha": "$2b$10$tXVgeG1zjFbB6Adf.Ldvxus7VLvp3Kc2ph4BL13Tpw3r43xt9NIi."
+  },
+  {
+    "id": 5,
+    "nome": "Teste Criptografia",
+    "email": "testeCripto1752543752067@email.com",
+    "senha": "$2b$10$1Vw443mceKBBARsormvmzejAYtgLsQJhi91HPSzCk1TCY0l.9AmwO"
+  },
+  {
+    "id": 6,
+    "nome": "Lucas Silva",
+    "email": "lucas1752543855260@email.com",
+    "senha": "$2b$10$FxTMOB39I/MEQ5UY2gTLLOha53kLoEnUu23qwAg.GHA6W/M14KF4i"
+  },
+  {
+    "id": 7,
+    "nome": "Teste Criptografia",
+    "email": "testeCripto1752543855328@email.com",
+    "senha": "$2b$10$GaX1hVO2wUxtUdDvoC/KuOADIBGmg7kbXOt7sHrcWR2L69NJSjp1."
   }
 ]
