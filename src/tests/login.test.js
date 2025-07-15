@@ -63,4 +63,19 @@ describe("Login dados corretos", () => {
             })
         })
     })
+    describe("Usuário Bloqueado", () => {
+        describe("POST /login", () => {
+            it("Deve retornar 401 quando o usuário está bloqueado", async () => {
+                const response = await request('http://localhost:3000')
+                    .post('/auth/login')
+                    .set('Content-Type', 'application/json')
+                    .send({
+                        'email': 'gustavo050899.morales@gmail.com',
+                        'senha': '12345678'
+                    })
+                expect(response.status).to.equal(401); // Verifica se o status é 401
+                expect(response.body.error).to.equal("Usuário bloqueado"); // Verifica se a
+            })
+        })
+    })
 })
