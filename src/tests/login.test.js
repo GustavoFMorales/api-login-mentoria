@@ -1,7 +1,16 @@
 import request from 'supertest';
 import { expect } from 'chai';
 import dotenv from 'dotenv';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
 dotenv.config();
+
+// Configurar __dirname para ES6 modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 describe("Login dados corretos", () => {
     describe("POST /login", () => {
@@ -65,6 +74,24 @@ describe("Login dados corretos", () => {
     })
     describe("Usuário Bloqueado", () => {
         describe("POST /login", () => {
+            before(async () => {
+                const loginData = {
+                    email: 'gustavo050899.morales@gmail.com',
+                    senha: '12345678'
+                };
+                const app = 'http://localhost:3000';
+
+                for (let i = 0; i < 4; i++) {
+                    await request(app)
+                        .post('/auth/login')
+                        .set('Content-Type', 'application/json')
+                        .send({
+                            'email': 'gustavo050899.morales@gmail.com',
+                            'senha': '12345678'
+                        })
+                }
+            });
+
             it("Deve retornar 401 quando o usuário está bloqueado", async () => {
                 const response = await request('http://localhost:3000')
                     .post('/auth/login')
@@ -74,7 +101,55 @@ describe("Login dados corretos", () => {
                         'senha': '12345678'
                     })
                 expect(response.status).to.equal(401); // Verifica se o status é 401
-                expect(response.body.error).to.equal("Usuário bloqueado"); // Verifica se a
+                expect(response.body.error).to.equal("Usuário bloqueado"); // Verifica se a mensagem está correta
+            })
+
+            it("Deve bloquear usuário após 3 tentativas e persistir no arquivo", async () => {
+                const emailTeste = `teste${Date.now()}@bloqueio.com`;
+                const senhaCorreta = "senhaCorreta123";
+                const senhaIncorreta = "senhaErrada";
+                
+                // 1. Primeiro cadastrar um usuário de teste
+                await request('http://localhost:3000')
+                    .post('/auth/cadastrar')
+                    .set('Content-Type', 'application/json')
+                    .send({
+                        "nome": "Teste Bloqueio",
+                        "email": emailTeste,
+                        "senha": senhaCorreta
+                    });
+
+                // 2. Fazer 3 tentativas com senha incorreta
+                for (let i = 0; i < 3; i++) {
+                    await request('http://localhost:3000')
+                        .post('/auth/login')
+                        .set('Content-Type', 'application/json')
+                        .send({
+                            'email': emailTeste,
+                            'senha': senhaIncorreta
+                        });
+                }
+
+                // 3. Verificar se o usuário foi bloqueado no arquivo
+                const usersFile = path.join(__dirname, "../data/users.json");
+                const usersData = JSON.parse(fs.readFileSync(usersFile, "utf8"));
+                const usuarioBloqueado = usersData.find(user => user.email === emailTeste);
+                
+                expect(usuarioBloqueado).to.not.be.undefined;
+                expect(usuarioBloqueado.bloqueado).to.be.true;
+                expect(usuarioBloqueado.tentativasFalhas).to.equal(3);
+
+                // 4. Tentar login com senha correta e verificar bloqueio
+                const response = await request('http://localhost:3000')
+                    .post('/auth/login')
+                    .set('Content-Type', 'application/json')
+                    .send({
+                        'email': emailTeste,
+                        'senha': senhaCorreta // Mesmo com senha correta
+                    });
+                
+                expect(response.status).to.equal(401);
+                expect(response.body.error).to.equal("Usuário bloqueado");
             })
         })
     })
