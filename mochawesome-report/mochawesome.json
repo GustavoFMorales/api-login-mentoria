@@ -1,14 +1,14 @@
 {
   "stats": {
-    "suites": 14,
-    "tests": 10,
-    "passes": 10,
+    "suites": 20,
+    "tests": 13,
+    "passes": 13,
     "pending": 0,
     "failures": 0,
-    "start": "2025-07-19T12:00:11.938Z",
-    "end": "2025-07-19T12:00:12.753Z",
-    "duration": 815,
-    "testsRegistered": 10,
+    "start": "2025-07-19T13:16:56.821Z",
+    "end": "2025-07-19T13:17:00.856Z",
+    "duration": 4035,
+    "testsRegistered": 13,
     "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "6fb999e7-e2e7-4b7d-9a68-f93218af250b",
+      "uuid": "a4afc06a-dce4-47f9-bdbc-4cbc38ce7b51",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "de4df36f-3a5f-46e8-9a0a-0526b8cd8727",
+          "uuid": "f882af64-a5e0-49ac-bd23-14670e1243a3",
           "title": "Login dados corretos",
           "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\login.test.js",
           "file": "\\src\\tests\\login.test.js",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "78a93f5a-a441-467e-b84a-864aceabb156",
+              "uuid": "439b19aa-8aa7-4b3b-80ae-8462dfe64185",
               "title": "POST /login",
               "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\login.test.js",
               "file": "\\src\\tests\\login.test.js",
@@ -47,7 +47,7 @@
                   "title": "Deve retornar 200 com token quando login e senha estão corretos",
                   "fullTitle": "Login dados corretos POST /login Deve retornar 200 com token quando login e senha estão corretos",
                   "timedOut": false,
-                  "duration": 86,
+                  "duration": 85,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -56,26 +56,26 @@
                   "context": null,
                   "code": "const response = await request('http://localhost:3000')\n    .post('/auth/login')\n    .set('Content-Type', 'application/json')\n    .send({\n        'email': 'joao@email.com',\n        'senha': '123456'\n    })\nexpect(response.status).to.equal(200); // Verifica se o status é 200\nexpect(response.body.token).to.be.a('string'); // Verifica se o token é uma string",
                   "err": {},
-                  "uuid": "9f42f558-e58c-4a6c-a8fd-1bdee1dd9c49",
-                  "parentUUID": "78a93f5a-a441-467e-b84a-864aceabb156",
+                  "uuid": "172f5d75-49fa-409f-8bbe-cd7f89bc1baa",
+                  "parentUUID": "439b19aa-8aa7-4b3b-80ae-8462dfe64185",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "9f42f558-e58c-4a6c-a8fd-1bdee1dd9c49"
+                "172f5d75-49fa-409f-8bbe-cd7f89bc1baa"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 86,
+              "duration": 85,
               "root": false,
               "rootEmpty": false,
-              "_timeout": 2000
+              "_timeout": 40000
             },
             {
-              "uuid": "e7eb72a4-4a8e-453b-a197-c6a54bcceef7",
+              "uuid": "6bd2fb34-337d-4b79-b27f-edd0cc8c610e",
               "title": "Login dados incorretos",
               "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\login.test.js",
               "file": "\\src\\tests\\login.test.js",
@@ -84,7 +84,7 @@
               "tests": [],
               "suites": [
                 {
-                  "uuid": "8ba43393-6f6c-48ab-824f-0645562cf296",
+                  "uuid": "84ddf9ff-61aa-47c9-8b38-dc797567063c",
                   "title": "POST /login",
                   "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\login.test.js",
                   "file": "\\src\\tests\\login.test.js",
@@ -95,7 +95,7 @@
                       "title": "Deve retornar 401 quando email ou senha estão incorretos",
                       "fullTitle": "Login dados corretos Login dados incorretos POST /login Deve retornar 401 quando email ou senha estão incorretos",
                       "timedOut": false,
-                      "duration": 63,
+                      "duration": 62,
                       "state": "passed",
                       "speed": "medium",
                       "pass": true,
@@ -104,23 +104,23 @@
                       "context": null,
                       "code": "const response = await request('http://localhost:3000')\n    .post('/auth/login')\n    .set('Content-Type', 'application/json')\n    .send({\n        'email': 'joao@email.com',\n        'senha': '12345'\n    })\nexpect(response.status).to.equal(401); // Verifica se o status é 401\nexpect(response.body.error).to.equal(\"Senha incorreta\"); // Verifica se a mensagem de erro é a esperada",
                       "err": {},
-                      "uuid": "fc267d58-72ce-4fab-9784-fd0a1a9a7f65",
-                      "parentUUID": "8ba43393-6f6c-48ab-824f-0645562cf296",
+                      "uuid": "f2948b77-4acf-43ee-802f-e3bcc40a91d0",
+                      "parentUUID": "84ddf9ff-61aa-47c9-8b38-dc797567063c",
                       "isHook": false,
                       "skipped": false
                     }
                   ],
                   "suites": [],
                   "passes": [
-                    "fc267d58-72ce-4fab-9784-fd0a1a9a7f65"
+                    "f2948b77-4acf-43ee-802f-e3bcc40a91d0"
                   ],
                   "failures": [],
                   "pending": [],
                   "skipped": [],
-                  "duration": 63,
+                  "duration": 62,
                   "root": false,
                   "rootEmpty": false,
-                  "_timeout": 2000
+                  "_timeout": 40000
                 }
               ],
               "passes": [],
@@ -130,10 +130,10 @@
               "duration": 0,
               "root": false,
               "rootEmpty": false,
-              "_timeout": 2000
+              "_timeout": 40000
             },
             {
-              "uuid": "4751325f-5e31-46da-bee7-0d6235b1445e",
+              "uuid": "cf933c8c-2523-48cf-a2e5-f8e939576347",
               "title": "Login dados ausentes",
               "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\login.test.js",
               "file": "\\src\\tests\\login.test.js",
@@ -142,7 +142,7 @@
               "tests": [],
               "suites": [
                 {
-                  "uuid": "b0756e1b-d976-4f21-9036-c26087f83121",
+                  "uuid": "65d0b0d5-3c40-48ec-8eec-baaca35d931b",
                   "title": "POST /login",
                   "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\login.test.js",
                   "file": "\\src\\tests\\login.test.js",
@@ -162,8 +162,8 @@
                       "context": null,
                       "code": "const response = await request('http://localhost:3000')\n    .post('/auth/login')\n    .set('Content-Type', 'application/json')\n    .send({\n        'email': '',\n        'senha': '12345'\n    })\nexpect(response.status).to.equal(400); // Verifica se o status é 400\nexpect(response.body.error).to.equal(\"Email e senha são obrigatórios\"); // Verifica se a mensagem de erro é a esperada",
                       "err": {},
-                      "uuid": "8445b7b2-c2fe-4a0c-8c14-aac34100b989",
-                      "parentUUID": "b0756e1b-d976-4f21-9036-c26087f83121",
+                      "uuid": "c99775b0-f2a5-419a-8337-cdcdc8b00548",
+                      "parentUUID": "65d0b0d5-3c40-48ec-8eec-baaca35d931b",
                       "isHook": false,
                       "skipped": false
                     },
@@ -171,7 +171,7 @@
                       "title": "Deve retornar 400 quando senha está ausente",
                       "fullTitle": "Login dados corretos Login dados ausentes POST /login Deve retornar 400 quando senha está ausente",
                       "timedOut": false,
-                      "duration": 4,
+                      "duration": 3,
                       "state": "passed",
                       "speed": "fast",
                       "pass": true,
@@ -180,24 +180,24 @@
                       "context": null,
                       "code": "const response = await request('http://localhost:3000')\n    .post('/auth/login')\n    .set('Content-Type', 'application/json')\n    .send({\n        'email': 'joao@email.com',\n        'senha': ''\n    })\nexpect(response.status).to.equal(400); // Verifica se o status é 400\nexpect(response.body.error).to.equal(\"Email e senha são obrigatórios\"); // Verifica se a mensagem de erro é a esperada",
                       "err": {},
-                      "uuid": "80f43751-1915-4823-98e6-04a31d877098",
-                      "parentUUID": "b0756e1b-d976-4f21-9036-c26087f83121",
+                      "uuid": "91514fe8-e395-4054-b66d-fbdd55caff8a",
+                      "parentUUID": "65d0b0d5-3c40-48ec-8eec-baaca35d931b",
                       "isHook": false,
                       "skipped": false
                     }
                   ],
                   "suites": [],
                   "passes": [
-                    "8445b7b2-c2fe-4a0c-8c14-aac34100b989",
-                    "80f43751-1915-4823-98e6-04a31d877098"
+                    "c99775b0-f2a5-419a-8337-cdcdc8b00548",
+                    "91514fe8-e395-4054-b66d-fbdd55caff8a"
                   ],
                   "failures": [],
                   "pending": [],
                   "skipped": [],
-                  "duration": 7,
+                  "duration": 6,
                   "root": false,
                   "rootEmpty": false,
-                  "_timeout": 2000
+                  "_timeout": 40000
                 }
               ],
               "passes": [],
@@ -207,10 +207,10 @@
               "duration": 0,
               "root": false,
               "rootEmpty": false,
-              "_timeout": 2000
+              "_timeout": 40000
             },
             {
-              "uuid": "db1493d1-fd52-47a0-93ac-6a4dfac71bac",
+              "uuid": "ed63a252-7a90-4e88-83c7-803e0887baff",
               "title": "Usuário Bloqueado",
               "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\login.test.js",
               "file": "\\src\\tests\\login.test.js",
@@ -219,7 +219,7 @@
               "tests": [],
               "suites": [
                 {
-                  "uuid": "f93279b5-eb89-4c77-9d9e-39399c015980",
+                  "uuid": "83653319-ff1c-4710-896e-d4b61a4e7144",
                   "title": "POST /login",
                   "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\login.test.js",
                   "file": "\\src\\tests\\login.test.js",
@@ -228,7 +228,7 @@
                       "title": "\"before all\" hook in \"POST /login\"",
                       "fullTitle": "Login dados corretos Usuário Bloqueado POST /login \"before all\" hook in \"POST /login\"",
                       "timedOut": false,
-                      "duration": 192,
+                      "duration": 12,
                       "state": null,
                       "speed": null,
                       "pass": false,
@@ -237,8 +237,8 @@
                       "context": null,
                       "code": "const loginData = {\n    email: 'gustavo050899.morales@gmail.com',\n    senha: '12345678'\n};\nconst app = 'http://localhost:3000';\nfor (let i = 0; i < 4; i++) {\n    await request(app)\n        .post('/auth/login')\n        .set('Content-Type', 'application/json')\n        .send({\n            'email': 'gustavo050899.morales@gmail.com',\n            'senha': '12345678'\n        })\n}",
                       "err": {},
-                      "uuid": "b62ef034-9e62-4bbe-b963-e9359f27542e",
-                      "parentUUID": "f93279b5-eb89-4c77-9d9e-39399c015980",
+                      "uuid": "01c8d228-77de-4c8f-a0a6-df15d96421d9",
+                      "parentUUID": "83653319-ff1c-4710-896e-d4b61a4e7144",
                       "isHook": true,
                       "skipped": false
                     }
@@ -258,8 +258,8 @@
                       "context": null,
                       "code": "const response = await request('http://localhost:3000')\n    .post('/auth/login')\n    .set('Content-Type', 'application/json')\n    .send({\n        'email': 'gustavo050899.morales@gmail.com',\n        'senha': '12345678'\n    })\nexpect(response.status).to.equal(401); // Verifica se o status é 401\nexpect(response.body.error).to.equal(\"Usuário bloqueado\"); // Verifica se a mensagem está correta",
                       "err": {},
-                      "uuid": "d2a149e3-554d-4e9f-9576-81a73a8b437c",
-                      "parentUUID": "f93279b5-eb89-4c77-9d9e-39399c015980",
+                      "uuid": "323391dc-74b9-4235-8d50-0d58f42892d8",
+                      "parentUUID": "83653319-ff1c-4710-896e-d4b61a4e7144",
                       "isHook": false,
                       "skipped": false
                     },
@@ -267,7 +267,7 @@
                       "title": "Deve bloquear usuário após 3 tentativas e persistir no arquivo",
                       "fullTitle": "Login dados corretos Usuário Bloqueado POST /login Deve bloquear usuário após 3 tentativas e persistir no arquivo",
                       "timedOut": false,
-                      "duration": 255,
+                      "duration": 252,
                       "state": "passed",
                       "speed": "slow",
                       "pass": true,
@@ -276,24 +276,24 @@
                       "context": null,
                       "code": "const emailTeste = `teste${Date.now()}@bloqueio.com`;\nconst senhaCorreta = \"senhaCorreta123\";\nconst senhaIncorreta = \"senhaErrada\";\n\n// 1. Primeiro cadastrar um usuário de teste\nawait request('http://localhost:3000')\n    .post('/auth/cadastrar')\n    .set('Content-Type', 'application/json')\n    .send({\n        \"nome\": \"Teste Bloqueio\",\n        \"email\": emailTeste,\n        \"senha\": senhaCorreta\n    });\n// 2. Fazer 3 tentativas com senha incorreta\nfor (let i = 0; i < 3; i++) {\n    await request('http://localhost:3000')\n        .post('/auth/login')\n        .set('Content-Type', 'application/json')\n        .send({\n            'email': emailTeste,\n            'senha': senhaIncorreta\n        });\n}\n// 3. Verificar se o usuário foi bloqueado no arquivo\nconst usersFile = path.join(__dirname, \"../data/users.json\");\nconst usersData = JSON.parse(fs.readFileSync(usersFile, \"utf8\"));\nconst usuarioBloqueado = usersData.find(user => user.email === emailTeste);\n\nexpect(usuarioBloqueado).to.not.be.undefined;\nexpect(usuarioBloqueado.bloqueado).to.be.true;\nexpect(usuarioBloqueado.tentativasFalhas).to.equal(3);\n// 4. Tentar login com senha correta e verificar bloqueio\nconst response = await request('http://localhost:3000')\n    .post('/auth/login')\n    .set('Content-Type', 'application/json')\n    .send({\n        'email': emailTeste,\n        'senha': senhaCorreta // Mesmo com senha correta\n    });\n\nexpect(response.status).to.equal(401);\nexpect(response.body.error).to.equal(\"Usuário bloqueado\");",
                       "err": {},
-                      "uuid": "83d9ec63-9a83-44e8-b7dd-02be61ba149c",
-                      "parentUUID": "f93279b5-eb89-4c77-9d9e-39399c015980",
+                      "uuid": "e54969b9-9eab-415a-8788-c45e4610f7d4",
+                      "parentUUID": "83653319-ff1c-4710-896e-d4b61a4e7144",
                       "isHook": false,
                       "skipped": false
                     }
                   ],
                   "suites": [],
                   "passes": [
-                    "d2a149e3-554d-4e9f-9576-81a73a8b437c",
-                    "83d9ec63-9a83-44e8-b7dd-02be61ba149c"
+                    "323391dc-74b9-4235-8d50-0d58f42892d8",
+                    "e54969b9-9eab-415a-8788-c45e4610f7d4"
                   ],
                   "failures": [],
                   "pending": [],
                   "skipped": [],
-                  "duration": 258,
+                  "duration": 255,
                   "root": false,
                   "rootEmpty": false,
-                  "_timeout": 2000
+                  "_timeout": 40000
                 }
               ],
               "passes": [],
@@ -303,7 +303,7 @@
               "duration": 0,
               "root": false,
               "rootEmpty": false,
-              "_timeout": 2000
+              "_timeout": 40000
             }
           ],
           "passes": [],
@@ -313,10 +313,184 @@
           "duration": 0,
           "root": false,
           "rootEmpty": false,
-          "_timeout": 2000
+          "_timeout": 40000
         },
         {
-          "uuid": "7ff830f5-2229-4ac4-bfea-0c0246e1a6c4",
+          "uuid": "94860362-28ad-45ee-b64b-67bba4aa3053",
+          "title": "Recuperar Senha",
+          "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\recuperarSenha.test.js",
+          "file": "\\src\\tests\\recuperarSenha.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "3bd655ad-528e-471c-a640-ff69ed81a804",
+              "title": "POST /auth/recuperar",
+              "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\recuperarSenha.test.js",
+              "file": "\\src\\tests\\recuperarSenha.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Deve retornar 200 quando o email é válido e o código de recuperação é enviado",
+                  "fullTitle": "Recuperar Senha POST /auth/recuperar Deve retornar 200 quando o email é válido e o código de recuperação é enviado",
+                  "timedOut": false,
+                  "duration": 3402,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const response = await request('http://localhost:3000')\n    .post('/auth/recuperar')\n    .set('Content-Type', 'application/json')\n    .send({\n        \"email\": \"gustavo050899.morales@gmail.com\"\n    })\nexpect(response.status).to.equal(200); // Verifica se o status é 200\nexpect(response.body.message).to.equal(\"Código de recuperação enviado para seu e-mail.\"); // Verifica se a mensagem de sucesso é a esperada",
+                  "err": {},
+                  "uuid": "a9992f65-efa0-465c-a931-9ddd09dab0c7",
+                  "parentUUID": "3bd655ad-528e-471c-a640-ff69ed81a804",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "a9992f65-efa0-465c-a931-9ddd09dab0c7"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 3402,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 40000
+            },
+            {
+              "uuid": "1c3af4ce-029e-4a12-a866-b82f5f4d9d53",
+              "title": "Email não encontrado",
+              "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\recuperarSenha.test.js",
+              "file": "\\src\\tests\\recuperarSenha.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [],
+              "suites": [
+                {
+                  "uuid": "4d2060d6-3fa3-40a8-a83c-cf025b4ee0e6",
+                  "title": "POST /auth/recuperar",
+                  "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\recuperarSenha.test.js",
+                  "file": "\\src\\tests\\recuperarSenha.test.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "Deve retornar 404 quando o email não está cadastrado",
+                      "fullTitle": "Recuperar Senha Email não encontrado POST /auth/recuperar Deve retornar 404 quando o email não está cadastrado",
+                      "timedOut": false,
+                      "duration": 3,
+                      "state": "passed",
+                      "speed": "fast",
+                      "pass": true,
+                      "fail": false,
+                      "pending": false,
+                      "context": null,
+                      "code": "const response = await request('http://localhost:3000')\n    .post('/auth/recuperar')\n    .set('Content-Type', 'application/json')\n    .send({\n        \"email\": \"inexistente@email.com\"\n    })\nexpect(response.status).to.equal(404); // Verifica se o status é 404\nexpect(response.body.error).to.equal(\"Usuário não encontrado\"); // Verifica se a mensagem de erro é a esperada",
+                      "err": {},
+                      "uuid": "d1161c6e-ef02-4c08-bfd9-dd3841448737",
+                      "parentUUID": "4d2060d6-3fa3-40a8-a83c-cf025b4ee0e6",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [
+                    "d1161c6e-ef02-4c08-bfd9-dd3841448737"
+                  ],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 3,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 40000
+                }
+              ],
+              "passes": [],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 0,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 40000
+            },
+            {
+              "uuid": "c033b389-6caa-4a25-9b65-4bccde084076",
+              "title": "E-mail ausente",
+              "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\recuperarSenha.test.js",
+              "file": "\\src\\tests\\recuperarSenha.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [],
+              "suites": [
+                {
+                  "uuid": "72ec6674-f95b-4a14-81c7-8059411efeaf",
+                  "title": "POST /auth/recuperar",
+                  "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\recuperarSenha.test.js",
+                  "file": "\\src\\tests\\recuperarSenha.test.js",
+                  "beforeHooks": [],
+                  "afterHooks": [],
+                  "tests": [
+                    {
+                      "title": "Deve retornar 400 quando o e-mail não é fornecido",
+                      "fullTitle": "Recuperar Senha E-mail ausente POST /auth/recuperar Deve retornar 400 quando o e-mail não é fornecido",
+                      "timedOut": false,
+                      "duration": 2,
+                      "state": "passed",
+                      "speed": "fast",
+                      "pass": true,
+                      "fail": false,
+                      "pending": false,
+                      "context": null,
+                      "code": "const response = await request('http://localhost:3000')\n    .post('/auth/recuperar')\n    .set('Content-Type', 'application/json')\n    .send({})\nexpect(response.status).to.equal(400); // Verifica se o status é 400\nexpect(response.body.error).to.equal(\"Email é obrigatório\"); // Verifica se a mensagem de erro é a esperada",
+                      "err": {},
+                      "uuid": "c3c11717-8592-4595-8174-a4eb82fe4d36",
+                      "parentUUID": "72ec6674-f95b-4a14-81c7-8059411efeaf",
+                      "isHook": false,
+                      "skipped": false
+                    }
+                  ],
+                  "suites": [],
+                  "passes": [
+                    "c3c11717-8592-4595-8174-a4eb82fe4d36"
+                  ],
+                  "failures": [],
+                  "pending": [],
+                  "skipped": [],
+                  "duration": 2,
+                  "root": false,
+                  "rootEmpty": false,
+                  "_timeout": 40000
+                }
+              ],
+              "passes": [],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 0,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 40000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 40000
+        },
+        {
+          "uuid": "f3acf92b-edd8-464f-842b-ab6ea7435040",
           "title": "Cadastro Usuario",
           "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\registrar.test.js",
           "file": "\\src\\tests\\registrar.test.js",
@@ -325,7 +499,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "e7f3646e-ac26-47c2-8bb8-3bcd86569b8f",
+              "uuid": "06751ce4-8c95-4f97-844c-5f26870cd816",
               "title": "POST /auth/registrar",
               "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\registrar.test.js",
               "file": "\\src\\tests\\registrar.test.js",
@@ -345,8 +519,8 @@
                   "context": null,
                   "code": "const emailUnico = `lucas${Date.now()}@email.com`; // Email único para evitar conflitos\n\nconst response = await request('http://localhost:3000')\n    .post('/auth/cadastrar')\n    .set('Content-Type', 'application/json')\n    .send({\n        \"nome\": \"Lucas Silva\",\n        \"email\": emailUnico,\n        \"senha\": \"123456\"\n    })\nexpect(response.status).to.equal(201); // Verifica se o status é 201\nexpect(response.body.message).to.equal(\"Usuário cadastrado com sucesso\"); // Verifica se a mensagem de sucesso é a esperada",
                   "err": {},
-                  "uuid": "db443043-98c7-4c0d-8359-c26d3561dfc4",
-                  "parentUUID": "e7f3646e-ac26-47c2-8bb8-3bcd86569b8f",
+                  "uuid": "46546eea-aa3b-4f18-970c-6a80381dc30e",
+                  "parentUUID": "06751ce4-8c95-4f97-844c-5f26870cd816",
                   "isHook": false,
                   "skipped": false
                 },
@@ -354,7 +528,7 @@
                   "title": "Deve criptografar a senha corretamente",
                   "fullTitle": "Cadastro Usuario POST /auth/registrar Deve criptografar a senha corretamente",
                   "timedOut": false,
-                  "duration": 123,
+                  "duration": 122,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -363,27 +537,27 @@
                   "context": null,
                   "code": "const emailTeste = `testeCripto${Date.now()}@email.com`; // Email único\nconst senhaOriginal = \"senhaParaTeste123\";\n\n// Cadastrar o usuário\nconst response = await request('http://localhost:3000')\n    .post('/auth/cadastrar')\n    .set('Content-Type', 'application/json')\n    .send({\n        \"nome\": \"Teste Criptografia\",\n        \"email\": emailTeste,\n        \"senha\": senhaOriginal\n    })\nexpect(response.status).to.equal(201);\n// Ler o arquivo users.json para verificar a senha criptografada\nconst usersFile = path.join(__dirname, \"../data/users.json\");\nconst usersData = JSON.parse(fs.readFileSync(usersFile, \"utf8\"));\n\n// Encontrar o usuário recém-criado\nconst usuarioCriado = usersData.find(user => user.email === emailTeste);\n\nexpect(usuarioCriado).to.not.be.undefined;\n\n// Verificar se a senha foi criptografada\nexpect(usuarioCriado.senha).to.not.equal(senhaOriginal); // Senha não deve ser igual à original\nexpect(usuarioCriado.senha).to.include(\"$2b$\"); // Deve conter o prefixo do bcrypt\nexpect(usuarioCriado.senha.length).to.be.greaterThan(50); // Hash bcrypt tem mais de 50 caracteres\n\n// Verificar se a senha original bate com o hash (usando bcrypt.compare)\nconst senhaValida = await bcrypt.compare(senhaOriginal, usuarioCriado.senha);\nexpect(senhaValida).to.be.true;",
                   "err": {},
-                  "uuid": "064a8342-194d-4782-bf78-699642b84e0f",
-                  "parentUUID": "e7f3646e-ac26-47c2-8bb8-3bcd86569b8f",
+                  "uuid": "6fc324d6-bbaa-416a-b6d1-57d1826e8a18",
+                  "parentUUID": "06751ce4-8c95-4f97-844c-5f26870cd816",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "db443043-98c7-4c0d-8359-c26d3561dfc4",
-                "064a8342-194d-4782-bf78-699642b84e0f"
+                "46546eea-aa3b-4f18-970c-6a80381dc30e",
+                "6fc324d6-bbaa-416a-b6d1-57d1826e8a18"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 186,
+              "duration": 185,
               "root": false,
               "rootEmpty": false,
-              "_timeout": 2000
+              "_timeout": 40000
             },
             {
-              "uuid": "b00865fa-0067-4297-85e1-ff5658573d52",
+              "uuid": "09e16140-3066-46e2-8993-6c398e281632",
               "title": "Usuario já cadastrado",
               "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\registrar.test.js",
               "file": "\\src\\tests\\registrar.test.js",
@@ -392,7 +566,7 @@
               "tests": [],
               "suites": [
                 {
-                  "uuid": "2f82f53d-de80-4784-8411-3e4a51db7a11",
+                  "uuid": "4dc4c30d-6800-4736-93cf-8ba05e166f8c",
                   "title": "POST /auth/registrar",
                   "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\registrar.test.js",
                   "file": "\\src\\tests\\registrar.test.js",
@@ -412,15 +586,15 @@
                       "context": null,
                       "code": "const response = await request('http://localhost:3000')\n    .post('/auth/cadastrar')\n    .set('Content-Type', 'application/json')\n    .send({\n        \"nome\": \"Lucas Silva\",\n        \"email\": \"lucasSilva@email.com\",\n        \"senha\": \"123456\"\n    })\nexpect(response.status).to.equal(400); // Verifica se o status é 400\nexpect(response.body.error).to.equal(\"Usuário já cadastrado\"); // Verifica se a mensagem de erro é a esperada",
                       "err": {},
-                      "uuid": "de5abe14-1ffe-439c-8b2e-5558f3bcb6d3",
-                      "parentUUID": "2f82f53d-de80-4784-8411-3e4a51db7a11",
+                      "uuid": "99a3d887-9bb2-497b-bfd5-23c75ab26b38",
+                      "parentUUID": "4dc4c30d-6800-4736-93cf-8ba05e166f8c",
                       "isHook": false,
                       "skipped": false
                     }
                   ],
                   "suites": [],
                   "passes": [
-                    "de5abe14-1ffe-439c-8b2e-5558f3bcb6d3"
+                    "99a3d887-9bb2-497b-bfd5-23c75ab26b38"
                   ],
                   "failures": [],
                   "pending": [],
@@ -428,7 +602,7 @@
                   "duration": 3,
                   "root": false,
                   "rootEmpty": false,
-                  "_timeout": 2000
+                  "_timeout": 40000
                 }
               ],
               "passes": [],
@@ -438,10 +612,10 @@
               "duration": 0,
               "root": false,
               "rootEmpty": false,
-              "_timeout": 2000
+              "_timeout": 40000
             },
             {
-              "uuid": "77628dac-de16-4d0d-be50-475c2ced3578",
+              "uuid": "8b644ab7-abf8-416e-a868-9ce826ea9db6",
               "title": "Dados ausentes",
               "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\registrar.test.js",
               "file": "\\src\\tests\\registrar.test.js",
@@ -450,7 +624,7 @@
               "tests": [],
               "suites": [
                 {
-                  "uuid": "86bb34d6-4cf9-4d34-9981-40c5030f649b",
+                  "uuid": "26664185-1d61-44ab-8a6d-103ae998d83d",
                   "title": "POST /auth/registrar",
                   "fullFile": "C:\\Users\\gusta\\OneDrive\\Área de Trabalho\\Meus Projetos\\mentoria-projeto-api-login\\src\\tests\\registrar.test.js",
                   "file": "\\src\\tests\\registrar.test.js",
@@ -470,15 +644,15 @@
                       "context": null,
                       "code": "const response = await request('http://localhost:3000')\n    .post('/auth/cadastrar')\n    .set('Content-Type', 'application/json')\n    .send({\n        \"nome\": \"\",\n        \"email\": \"\",\n        \"senha\": \"\"\n    })\nexpect(response.status).to.equal(400); // Verifica se o status é 400\nexpect(response.body.error).to.equal(\"Todos os campos são obrigatórios\"); // Verifica se a mensagem de erro é a esperada",
                       "err": {},
-                      "uuid": "7f54dd8c-fe48-41da-af09-34f93a8c2ccc",
-                      "parentUUID": "86bb34d6-4cf9-4d34-9981-40c5030f649b",
+                      "uuid": "c64d6669-c2e3-4daf-99e6-dd0fca3820ac",
+                      "parentUUID": "26664185-1d61-44ab-8a6d-103ae998d83d",
                       "isHook": false,
                       "skipped": false
                     }
                   ],
                   "suites": [],
                   "passes": [
-                    "7f54dd8c-fe48-41da-af09-34f93a8c2ccc"
+                    "c64d6669-c2e3-4daf-99e6-dd0fca3820ac"
                   ],
                   "failures": [],
                   "pending": [],
@@ -486,7 +660,7 @@
                   "duration": 2,
                   "root": false,
                   "rootEmpty": false,
-                  "_timeout": 2000
+                  "_timeout": 40000
                 }
               ],
               "passes": [],
@@ -496,7 +670,7 @@
               "duration": 0,
               "root": false,
               "rootEmpty": false,
-              "_timeout": 2000
+              "_timeout": 40000
             }
           ],
           "passes": [],
@@ -506,7 +680,7 @@
           "duration": 0,
           "root": false,
           "rootEmpty": false,
-          "_timeout": 2000
+          "_timeout": 40000
         }
       ],
       "passes": [],
@@ -516,7 +690,7 @@
       "duration": 0,
       "root": true,
       "rootEmpty": true,
-      "_timeout": 2000
+      "_timeout": 40000
     }
   ],
   "meta": {
