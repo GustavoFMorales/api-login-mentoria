@@ -131,9 +131,9 @@ describe("Login dados corretos", () => {
                 }
 
                 // 3. Verificar se o usuário foi bloqueado no arquivo
-                const usersFile = path.join(__dirname, "../data/users.json");
-                const usersData = JSON.parse(fs.readFileSync(usersFile, "utf8"));
-                const usuarioBloqueado = usersData.find(user => user.email === emailTeste);
+                const usersFile = path.join(__dirname, "../data/users.json"); // Caminho para o arquivo users.json
+                const usersData = JSON.parse(fs.readFileSync(usersFile, "utf8")); // Lê os dados do arquivo
+                const usuarioBloqueado = usersData.find(user => user.email === emailTeste); // Encontra o usuário pelo email
                 
                 expect(usuarioBloqueado).to.not.be.undefined;
                 expect(usuarioBloqueado.bloqueado).to.be.true;

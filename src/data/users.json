@@ -10,8 +10,8 @@
     "id": 2,
     "nome": "Gustavo Morales",
     "email": "gustavo050899.morales@gmail.com",
-    "senha": "$2b$10$PZuaBwTlSpK8pq/VwK6RQuKV4NKvAJezxUNE.8ypfDonau08.SSVG",
-    "codigoRecuperacao": "334400",
+    "senha": "$2b$10$xnxRJpDVWMH/vIJ67kJnm.AP2bFAzZrZGAWsY7zbFSktE/4j4EJnK",
+    "codigoRecuperacao": null,
     "tentativasFalhas": 3,
     "bloqueado": true
   },
@@ -336,5 +336,25 @@
     "nome": "Teste Criptografia",
     "email": "testeCripto1752931020727@email.com",
     "senha": "$2b$10$GBkbESTz7W5.VozQZAYP2.MAz2oqVZlJQ1zNQjL7eeYIWDLtH48cG"
+  },
+  {
+    "id": 54,
+    "nome": "Teste Bloqueio",
+    "email": "teste1752937482631@bloqueio.com",
+    "senha": "$2b$10$9scYY2pYMD13sQhyoa6OwOrHDa.evEc9YxJeG9hKwk5lgswSW88mu",
+    "tentativasFalhas": 3,
+    "bloqueado": true
+  },
+  {
+    "id": 55,
+    "nome": "Lucas Silva",
+    "email": "lucas1752937490789@email.com",
+    "senha": "$2b$10$vmYjP6ArwvW7bhPPURcAS.66yj.steOgr5clbvVT/UDdn4mW6cc1O"
+  },
+  {
+    "id": 56,
+    "nome": "Teste Criptografia",
+    "email": "testeCripto1752937490859@email.com",
+    "senha": "$2b$10$r6OPmQob.czBfU64opRvx.ikrnufMGl1cQuIWqxo5iunXPlp.GjxG"
   }
 ]
