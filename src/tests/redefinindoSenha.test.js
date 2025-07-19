@@ -92,7 +92,7 @@ describe("Redefinir Senha", () => {
                 .send({
                     "email": "gustavo050899.morales@gmail.com",
                     // codigo ausente
-                    "novaSenha": "novaSenha123"
+                    "novaSenha": "novaSenha1234"
                 });
             
             expect(response.status).to.equal(400);
