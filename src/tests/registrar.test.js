@@ -77,8 +77,8 @@ describe("Cadastro Usuario", () => {
                     .post('/auth/cadastrar')
                     .set('Content-Type', 'application/json')
                     .send({
-                        "nome": "Lucas Silva",
-                        "email": "lucasSilva@email.com",
+                        "nome": "João Silva",
+                        "email": "joao@email.com",
                         "senha": "123456"
                     })
                 expect(response.status).to.equal(400); // Verifica se o status é 400

@@ -9,7 +9,7 @@ const options = {
             description: 'API REST completa para autenticação de usuários com funcionalidades de cadastro, login, recuperação e redefinição de senha.',
             contact: {
                 name: 'Desenvolvedor',
-                email: 'gustavo050899.morales@gmail.com'
+                email: 'joao@email.com'
             },
             license: {
                 name: 'ISC',

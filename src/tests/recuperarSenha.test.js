@@ -22,7 +22,7 @@ describe("Recuperar Senha", () => {
                 .post('/auth/recuperar')
                 .set('Content-Type', 'application/json')
                 .send({
-                    "email": "gustavo050899.morales@gmail.com"
+                    "email": "joao@email.com"
                 })
             expect(response.status).to.equal(200); // Verifica se o status é 200
             expect(response.body.message).to.equal("Código de recuperação enviado para seu e-mail."); // Verifica se a mensagem de sucesso é a esperada

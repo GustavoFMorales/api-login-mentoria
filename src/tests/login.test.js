@@ -79,7 +79,7 @@ describe("Login dados corretos", () => {
         describe("POST /login", () => {
             before(async () => {
                 const loginData = {
-                    email: 'gustavo050899.morales@gmail.com',
+                    email: 'joao@email.com',
                     senha: '12345678'
                 };
                 const app = SERVER_URL;
@@ -89,7 +89,7 @@ describe("Login dados corretos", () => {
                         .post('/auth/login')
                         .set('Content-Type', 'application/json')
                         .send({
-                            'email': 'gustavo050899.morales@gmail.com',
+                            'email': 'joao@email.com',
                             'senha': '12345678'
                         })
                 }
@@ -100,7 +100,7 @@ describe("Login dados corretos", () => {
                     .post('/auth/login')
                     .set('Content-Type', 'application/json')
                     .send({
-                        'email': 'gustavo050899.morales@gmail.com',
+                        'email': 'joao@email.com',
                         'senha': '12345678'
                     })
                 expect(response.status).to.equal(401); // Verifica se o status é 401

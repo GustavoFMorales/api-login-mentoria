@@ -303,5 +303,5 @@ Este projeto está sob a licença ISC.
 ## 👨‍💻 Autor
 
 **Gustavo Morales**
-- Email: gustavo050899.morales@gmail.com
+- Email: joao@email.com
 - GitHub: [@seu-usuario](https://github.com/seu-usuario) 

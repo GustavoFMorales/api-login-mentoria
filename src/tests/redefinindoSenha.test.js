@@ -18,7 +18,7 @@ const SERVER_URL = process.env.SERVER || 'http://localhost:3000';
 describe("Redefinir Senha", () => {
     describe("POST /auth/redefinir", () => {
         it("Deve redefinir senha com código válido do arquivo", async () => {
-            const emailTeste = "gustavo050899.morales@gmail.com";
+            const emailTeste = "joao@email.com";
             
             // 1. Primeiro solicitar código de recuperação
             const recuperarResponse = await request(SERVER_URL)
@@ -65,7 +65,7 @@ describe("Redefinir Senha", () => {
                 .post('/auth/redefinir')
                 .set('Content-Type', 'application/json')
                 .send({
-                    "email": "gustavo050899.morales@gmail.com",
+                    "email": "joao@email.com",
                     "codigo": "999999", // Código inválido
                     "novaSenha": "novaSenha123"
                 });
@@ -93,7 +93,7 @@ describe("Redefinir Senha", () => {
                 .post('/auth/redefinir')
                 .set('Content-Type', 'application/json')
                 .send({
-                    "email": "gustavo050899.morales@gmail.com",
+                    "email": "joao@email.com",
                     // codigo ausente
                     "novaSenha": "novaSenha1234"
                 });
