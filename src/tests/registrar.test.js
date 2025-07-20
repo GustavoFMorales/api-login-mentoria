@@ -13,12 +13,15 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// URL do servidor a partir do .env
+const SERVER_URL = process.env.SERVER || 'http://localhost:3000';
+
 describe("Cadastro Usuario", () => {
     describe("POST /auth/registrar", () => {
         it("Deve retornar 201 quando o usuário é cadastrado com sucesso", async () => {
             const emailUnico = `lucas${Date.now()}@email.com`; // Email único para evitar conflitos
             
-            const response = await request('http://localhost:3000')
+            const response = await request(SERVER_URL)
                 .post('/auth/cadastrar')
                 .set('Content-Type', 'application/json')
                 .send({
@@ -36,7 +39,7 @@ describe("Cadastro Usuario", () => {
             const senhaOriginal = "senhaParaTeste123";
             
             // Cadastrar o usuário
-            const response = await request('http://localhost:3000')
+            const response = await request(SERVER_URL)
                 .post('/auth/cadastrar')
                 .set('Content-Type', 'application/json')
                 .send({
@@ -70,7 +73,7 @@ describe("Cadastro Usuario", () => {
     describe("Usuario já cadastrado", () => {
         describe("POST /auth/registrar", () => {
             it("Deve retornar 400 quando o usuário já está cadastrado", async () => {
-                const response = await request('http://localhost:3000')
+                const response = await request(SERVER_URL)
                     .post('/auth/cadastrar')
                     .set('Content-Type', 'application/json')
                     .send({
@@ -87,7 +90,7 @@ describe("Cadastro Usuario", () => {
     describe("Dados ausentes", () => {
         describe("POST /auth/registrar", () => {
             it("Deve retornar 400 quando algum campo obrigatório está ausente", async () => {
-                const response = await request('http://localhost:3000')
+                const response = await request(SERVER_URL)
                     .post('/auth/cadastrar')
                     .set('Content-Type', 'application/json')
                     .send({

@@ -6,10 +6,19 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+dotenv.config();
+
+// Configurar __dirname para ES6 modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// URL do servidor a partir do .env
+const SERVER_URL = process.env.SERVER || 'http://localhost:3000';
+
 describe("Recuperar Senha", () => {
     describe("POST /auth/recuperar", () => {
         it("Deve retornar 200 quando o email é válido e o código de recuperação é enviado", async () => {
-            const response = await request('http://localhost:3000')
+            const response = await request(SERVER_URL)
                 .post('/auth/recuperar')
                 .set('Content-Type', 'application/json')
                 .send({
@@ -22,7 +31,7 @@ describe("Recuperar Senha", () => {
     describe("Email não encontrado", () => {
         describe("POST /auth/recuperar", () => {
             it("Deve retornar 404 quando o email não está cadastrado", async () => {
-                const response = await request('http://localhost:3000')
+                const response = await request(SERVER_URL)
                     .post('/auth/recuperar')
                     .set('Content-Type', 'application/json')
                     .send({
@@ -35,8 +44,8 @@ describe("Recuperar Senha", () => {
     });
     describe("E-mail ausente", () => {
         describe("POST /auth/recuperar", () => {
-            it("Deve retornar 400 quando o e-mail não é fornecido", async () => {
-                const response = await request('http://localhost:3000')
+            it("Deve retornar 400 quando o email está ausente", async () => {
+                const response = await request(SERVER_URL)
                     .post('/auth/recuperar')
                     .set('Content-Type', 'application/json')
                     .send({})

@@ -12,10 +12,13 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// URL do servidor a partir do .env
+const SERVER_URL = process.env.SERVER || 'http://localhost:3000';
+
 describe("Login dados corretos", () => {
     describe("POST /login", () => {
         it("Deve retornar 200 com token quando login e senha estão corretos", async () => {
-            const response = await request('http://localhost:3000')
+            const response = await request(SERVER_URL)
                 .post('/auth/login')
                 .set('Content-Type', 'application/json')
                 .send({
@@ -32,7 +35,7 @@ describe("Login dados corretos", () => {
     describe("Login dados incorretos", () => {
         describe("POST /login", () => {
             it("Deve retornar 401 quando email ou senha estão incorretos", async () => {
-                const response = await request('http://localhost:3000')
+                const response = await request(SERVER_URL)
                     .post('/auth/login')
                     .set('Content-Type', 'application/json')
                     .send({
@@ -48,7 +51,7 @@ describe("Login dados corretos", () => {
     describe("Login dados ausentes", () => {
         describe("POST /login", () => {
             it("Deve retornar 400 quando email está ausente", async () => {
-                const response = await request('http://localhost:3000')
+                const response = await request(SERVER_URL)
                     .post('/auth/login')
                     .set('Content-Type', 'application/json')
                     .send({
@@ -60,7 +63,7 @@ describe("Login dados corretos", () => {
             })
 
             it("Deve retornar 400 quando senha está ausente", async () => {
-                const response = await request('http://localhost:3000')
+                const response = await request(SERVER_URL)
                     .post('/auth/login')
                     .set('Content-Type', 'application/json')
                     .send({
@@ -79,7 +82,7 @@ describe("Login dados corretos", () => {
                     email: 'gustavo050899.morales@gmail.com',
                     senha: '12345678'
                 };
-                const app = 'http://localhost:3000';
+                const app = SERVER_URL;
 
                 for (let i = 0; i < 4; i++) {
                     await request(app)
@@ -93,7 +96,7 @@ describe("Login dados corretos", () => {
             });
 
             it("Deve retornar 401 quando o usuário está bloqueado", async () => {
-                const response = await request('http://localhost:3000')
+                const response = await request(SERVER_URL)
                     .post('/auth/login')
                     .set('Content-Type', 'application/json')
                     .send({
@@ -110,7 +113,7 @@ describe("Login dados corretos", () => {
                 const senhaIncorreta = "senhaErrada";
                 
                 // 1. Primeiro cadastrar um usuário de teste
-                await request('http://localhost:3000')
+                await request(SERVER_URL)
                     .post('/auth/cadastrar')
                     .set('Content-Type', 'application/json')
                     .send({
@@ -121,7 +124,7 @@ describe("Login dados corretos", () => {
 
                 // 2. Fazer 3 tentativas com senha incorreta
                 for (let i = 0; i < 3; i++) {
-                    await request('http://localhost:3000')
+                    await request(SERVER_URL)
                         .post('/auth/login')
                         .set('Content-Type', 'application/json')
                         .send({
@@ -140,7 +143,7 @@ describe("Login dados corretos", () => {
                 expect(usuarioBloqueado.tentativasFalhas).to.equal(3);
 
                 // 4. Tentar login com senha correta e verificar bloqueio
-                const response = await request('http://localhost:3000')
+                const response = await request(SERVER_URL)
                     .post('/auth/login')
                     .set('Content-Type', 'application/json')
                     .send({

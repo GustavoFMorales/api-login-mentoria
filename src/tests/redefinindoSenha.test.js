@@ -12,13 +12,16 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url); // Obtém o caminho do arquivo atual
 const __dirname = dirname(__filename); // Obtém o diretório do arquivo atual
 
+// URL do servidor a partir do .env
+const SERVER_URL = process.env.SERVER || 'http://localhost:3000';
+
 describe("Redefinir Senha", () => {
     describe("POST /auth/redefinir", () => {
         it("Deve redefinir senha com código válido do arquivo", async () => {
             const emailTeste = "gustavo050899.morales@gmail.com";
             
             // 1. Primeiro solicitar código de recuperação
-            const recuperarResponse = await request('http://localhost:3000')
+            const recuperarResponse = await request(SERVER_URL)
                 .post('/auth/recuperar')
                 .set('Content-Type', 'application/json')
                 .send({
@@ -39,7 +42,7 @@ describe("Redefinir Senha", () => {
             console.log(`Código de recuperação encontrado: ${usuario.codigoRecuperacao}`); // Log do código para verificação
             
             // 3. Usar o código para redefinir a senha
-            const redefinirResponse = await request('http://localhost:3000')
+            const redefinirResponse = await request(SERVER_URL)
                 .post('/auth/redefinir')
                 .set('Content-Type', 'application/json')
                 .send({
@@ -58,7 +61,7 @@ describe("Redefinir Senha", () => {
         });
 
         it("Deve retornar 401 com código inválido", async () => {
-            const response = await request('http://localhost:3000')
+            const response = await request(SERVER_URL)
                 .post('/auth/redefinir')
                 .set('Content-Type', 'application/json')
                 .send({
@@ -72,7 +75,7 @@ describe("Redefinir Senha", () => {
         });
 
         it("Deve retornar 404 quando usuário não existe", async () => {
-            const response = await request('http://localhost:3000')
+            const response = await request(SERVER_URL)
                 .post('/auth/redefinir')
                 .set('Content-Type', 'application/json')
                 .send({
@@ -86,7 +89,7 @@ describe("Redefinir Senha", () => {
         });
 
         it("Deve retornar 400 quando dados estão ausentes", async () => {
-            const response = await request('http://localhost:3000')
+            const response = await request(SERVER_URL)
                 .post('/auth/redefinir')
                 .set('Content-Type', 'application/json')
                 .send({

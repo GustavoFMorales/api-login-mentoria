@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "mocha src/tests/**/*.test.js --reporter mochawesome --timeout 40000"
+    "test": "mocha src/tests/**/*.test.js --reporter mochawesome --timeout 40000",
+    "test:fast": "mocha src/tests/login.test.js src/tests/registrar.test.js --reporter mochawesome --timeout 10000"
   },
   "keywords": [
     "api",
